@@ -97,15 +97,27 @@
                                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" placeholder="Please enter your password"
-                                        id="exampleInputPassword1" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                            <input type="password" class="form-control" placeholder="Please enter your password"
+                                                id="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-4">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Gender</option>
+                                            <option value="1">Man</option>
+                                            <option value="2">Woman</option>
+                                            <option value="3">patan gay</option>
+                                          </select>
+                                    </div>
                                 </div>
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" onclick="klikPassword()" class="form-check-input"
-                                        id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Show Password</label>
+                                    <input type="checkbox" onclick="clickPass()" class="form-check-input"
+                                        id="password">
+                                    <label class="form-check-label" for="password">Show Password</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -129,7 +141,16 @@
         })
 
         function klikPassword() {
-            var klik = document.getElementById('exampleInputPassword1', 'exampleInputPassword2');
+            var klik = document.getElementById('exampleInputPassword1');
+            if (klik.type === "password") {
+                klik.type = 'text';
+            } else {
+                klik.type = "password";
+            }
+        }
+
+        function clickPass() {
+            var klik = document.getElementById('password');
             if (klik.type === "password") {
                 klik.type = 'text';
             } else {
