@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form Login Basket</title>
+    <link rel="icon" href="./img/basket.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
@@ -22,8 +23,20 @@
         <div class="container m-auto">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="./img/basker.png" class="mx-auto d-block w-75 img" id="imagelogin" alt="gambarlogin"
-                        data-tilt />
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="/img/basker.png" class="mx-auto d-block w-75 img" id="imagelogin" alt="gambarlogin" data-tilt>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./img/femaleavatar.png" class="mx-auto d-block w-75 img" id="imagelogin" alt="gambarlogin" data-tilt>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./img/uad.png" class="mx-auto d-block w-75 img" id="imagelogin" alt="gambarlogin" data-tilt>
+                          </div>
+                        </div>
+                      </div>
+                    <!-- <img src="" class="mx-auto d-block w-75 img" id="imagelogin" alt="gambarlogin" data-tilt/> -->
                 </div>
                 <div class="col-md-6">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -46,14 +59,14 @@
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Username</label>
                                     <input type="email" class="form-control" placeholder="Please enter your username"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" placeholder="Please enter your password"
-                                        id="exampleInputPassword1">
+                                        id="exampleInputPassword1" required>
                                 </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" onclick="klikPassword()" class="form-check-input"
@@ -70,24 +83,24 @@
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Full Name</label>
                                     <input type="email" class="form-control" placeholder="Full Name"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Nick Name</label>
                                     <input type="email" class="form-control" placeholder="Nick Name"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
                                     <input type="email" class="form-control" placeholder="Email Address"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" placeholder="Please enter your password"
-                                        id="exampleInputPassword1">
+                                        id="exampleInputPassword1" required>
                                 </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" onclick="klikPassword()" class="form-check-input"
