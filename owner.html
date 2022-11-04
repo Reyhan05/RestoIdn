@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Owner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="resto.css">
+</head>
+
+<body>
+    <nav class="navbar shadow sticky-top navbar-expand-lg navbar-light bg-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="btn btn-light btn-sm" id="button-toggle">
+                <i class="bx  bxs-chevrons-right" id="icon"></i>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox"
+                                style="height: 30px; width: 50px; margin-left: 3px;" role="switch" id="switch" checked>
+                            <label class="form-check-label mt-2 ml-3 text-light" for="flexSwitchCheckChecked"><i
+                                    class='bx bxs-moon bx-sm text-light'></i></label>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-lg-flex m-auto mr-lg-5">
+                    <button class="btn btn-light text-custom" id="logout" type="button">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar shadow p-4 bg-light" id="sidebar">
+        <img src="./img/idnbaru.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
+        <ul>
+            <li>
+                <a href="menu.html" class="text-custom">
+                    <i class='bx bx-bowl-rice bx-sm'></i> Main Course
+                </a>
+            </li>
+            <li>
+                <a href="appetizer.html" class="text-custom">
+                    <i class='icon bx bx-baguette bx-sm'></i> Appetizer
+                </a>
+            </li>
+            <li>
+                <a href="#" class="text-custom">
+                    <i class='bx bxs-wine'></i> Dessert
+                </a>
+            </li>
+            <li>
+                <a href="#" class="text-custom">
+                    <i class='bx bx-popsicle'></i> Snack
+                </a>
+            </li>
+            <li>
+                <a href="cabang.html" class="text-custom">
+                    <i class='bx bx-home'></i> Cabang
+                </a>
+            </li>
+            <li>
+                <a href="owner.html" class="text-custom">
+                    <i class='bx bx-child'></i> Owner
+                </a>
+            </li>
+            <li>
+        <a href="suggestion.html" class="text-custom">
+          <i class='bx bx-comment-dots' ></i> Sugesstion
+        </a>
+      </li>
+        </ul>
+    </div>
+    <div class="p-4" id="main-content">
+        <div class="container">
+            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Owner</h1>
+            <div class="row d-flex">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <img class="avatar" style="width: 200px; height: 200px;"
+                            src="https://avatars.githubusercontent.com/u/68832297?v=4">
+                    </div>
+                    <div class="table-responsive mt-3">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Following</th>
+                                    <th>Followers</th>
+                                    <th>Location</th>
+                                    <th>Company</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data_git">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer fixed-bottom py-3 bg-custom">
+        <div class="container text-center">
+            <span class="text-light">Copyright ©Reyhan Mohamad Akbar </span>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js "
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin=" anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('button-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active-sidebar')
+            document.getElementById('main-content').classList.toggle('active-main-content')
+        })
+
+        $('#button-toggle').click(function () {
+            $('#icon').toggleClass('bx  bxs-chevrons-right bx bxs-chevrons-left')
+        })
+
+        $('#switch').click(function () {
+            $('#main-content , .footer , .navbar').toggleClass('bg-dark');
+            $('#textmode, .table').toggleClass('text-light');
+            $('#sidebar').toggleClass('bg-dark')
+            $('#labelmode').toggleClass('bxs-moon bx-moon')
+        })
+
+        var html = '';
+        var sumber = 'https://api.github.com/users/reyhan05';
+
+        fetch('https://api.github.com/users/reyhan05').then(res => res.json()).then(response => {
+            html += '<tr>' +
+                '<td>' + response.login + '</td>' +
+                '<td>' + response.following + '</td>' +
+                '<td>' + response.followers + '</td>' +
+                '<td>' + response.location + '</td>' +
+                '<td>' + response.company + '</td>' +
+                '</tr>';
+            $('#data_git').html(html);
+
+        })
+
+    </script>
+</body>
+
+</html>
