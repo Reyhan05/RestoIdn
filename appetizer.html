@@ -1,169 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Appetizer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="resto.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <title>Canteen IDN</title>
+  <link rel="stylesheet" href="resto.css">
 </head>
 
 <body>
-    <nav class="navbar shadow sticky-top navbar-expand-lg navbar-light bg-custom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
-            <button class="btn btn-light btn-sm" id="button-toggle">
-                <i class="bx  bxs-chevrons-right" id="icon"></i>
-            </button>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox"
-                                style="height: 30px; width: 50px; margin-left: 3px;" role="switch" id="switch" checked>
-                            <label class="form-check-label mt-2 ml-3 text-light" for="flexSwitchCheckChecked"><i
-                                    class='bx bxs-moon bx-sm text-light'></i></label>
-                        </div>
-                    </li>
-                </ul>
-                <form class="d-lg-flex m-auto mr-lg-5">
-                    <button class="btn btn-light text-custom" id="logout" type="button">Logout</button>
-                </form>
+  <div id="preloader">
+    <div id="status"></div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="btn btn-light btn-sm" id="button-toggle">
+        <i class="bx bxs-chevrons-right" id="icon"></i>
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <div class="form-check form-switch">
+              <input class="form-check-input" style="height: 30px; width: 50px" type="checkbox" id="switch" checked />
+              <label class="form-check-label ml-2 text-light" for="flexSwitchCheckChecked"><i
+                  class="bx bxs-moon bx-sm text-light" id="labelmode"></i></label>
             </div>
-        </div>
-    </nav>
-    <div class="sidebar shadow p-4 bg-light" id="sidebar">
-        <img src="./img/idnbaru.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
-        <ul>
-            <li>
-                <a href="menu.html" class="text-custom">
-                    <i class='bx bx-bowl-rice bx-sm'></i> Main Course
-                </a>
-            </li>
-            <li>
-                <a href="appetizer.html" class="text-custom">
-                    <i class='icon bx bx-baguette bx-sm'></i> Appetizer
-                </a>
-            </li>
-            <li>
-                <a href="dessert.html" class="text-custom">
-                    <i class='bx bxs-wine'></i> Dessert
-                </a>
-            </li>
-            <li>
-                <a href="snack.html" class="text-custom">
-                    <i class='bx bx-popsicle'></i> Snack
-                </a>
-            </li>
-            <li>
-                <a href="cabang.html" class="text-custom">
-                    <i class='bx bx-home'></i> Cabang
-                </a>
-            </li>
-            <li>
-                <a href="owner.html" class="text-custom">
-                    <i class='bx bx-child'></i> Owner
-                </a>
-            </li>
-            <li>
-                <a href="suggestion.html" class="text-custom">
-                  <i class='bx bx-comment-dots' ></i> Sugesstion
-                </a>
-              </li>
+          </li>
         </ul>
+        <form class="d-lg-flex">
+          <div class="pt-2 text-light">
+            <i class="bx bx-cart bx-sm" role="button" data-bs-toggle="modal" data-bs-target="#cartModal"></i>
+          </div>
+          &emsp;&emsp;
+          <button class="btn btn-light text-custom" id="  logout" type="button">
+            Logout
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="p-4" id="main-content">
-        <div class="container">
-            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Appetizer</h1>
-            <div class="row d-flex">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table" id="tableData">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Image</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="data_meal">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+  </nav>
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table" id="cart-table">
+              <thead>
+                <th>Nama Appertizer</th>
+                <th>Jumlah</th>
+              </thead>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
-    <footer class="footer py-3 bg-custom">
-        <div class="container text-center">
-            <span class="text-light">Copyright ©Reyhan Mohamad Akbar </span>
-        </div>
-    </footer>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js "
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin=" anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script>
-        document.getElementById('button-toggle').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.toggle('active-sidebar')
-            document.getElementById('main-content').classList.toggle('active-main-content')
-        })
+  </div>
+  <div class="sidebar shadow p-4 bg-light" id="sidebar">
+    <img src="IDN-.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
+    <ul>
+      <li>
+        <a href="appetizer.html" class="text-custom">
+          <i class="icon bx bx-baguette bx-sm"></i> Appetizer
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-custom">
+          <i class="bx bx-bowl-rice bx-sm"></i> Main Course
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-custom">
+          <i class="bx bxs-wine"></i> Dessert
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-custom">
+          <i class="bx bx-popsicle"></i> Snack
+        </a>
+      </li>
+      <li>
+        <a href="cabang.html" class="text-custom">
+          <i class="bx bx-home"></i> Cabang
+        </a>
+      </li>
+      <li>
+        <a href="owner.html" class="text-custom">
+          <i class="bx bx-child"></i> Owner
+        </a>
+      </li>
+      <li>
+        <a href="sugestion.html" class="text-custom">
+          <i class="bx bx-child"></i> Suggestion
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="p-4" id="main-content">
+    <div class="container">
+      <h1 class="h1 text-center textcustom" style="font-family: Brush Script mt">
+        Appetizer
+      </h1>
+      <div class="row d-flex justify-content-center" id="data_api"></div>
+    </div>
+  </div>
 
-        $('#button-toggle').click(function () {
-            $('#icon').toggleClass('bx  bxs-chevrons-right bx bxs-chevrons-left')
-        })
+  <footer class="footer py-3 bg-custom">
+    <div class="container text-center">
+      <span class="text-light">Copyright © Reyhan Mohamad Akbar </span>
+    </div>
+  </footer>
 
-        $('#switch').click(function () {
-            $('#main-content , .footer , .navbar').toggleClass('bg-dark');
-            $('#textmode, table').toggleClass('text-light');
-            $('#sidebar').toggleClass('bg-dark')
-            $('#labelmode').toggleClass('bxs-moon bx-moon')
-        })
+  <!-- Optional JavaScript; choose one of the two! -->
 
-        var html = '';
-        var sumber = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js "
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin=" anonymous "></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    $(document).ready(function () {
+      $("#status").fadeOut(10000);
+      $("#preloader").delay(1000).fadeOut(1000);
+      $("body").delay(500).css({
+        overflow: "visible",
+      });
+    });
 
-        fetch('https://www.themealdb.com/api/json/v1/1/categories.php').then(res => res.json()).then(db => {
-            for (i = 1; i < sumber.length; i++) {
-                html += '<tr>' +
-                    '<td>' + db.categories[i].strCategory + '</td>' +
-                    '<td><img src="' + db.categories[i].strCategoryThumb + '" class"d-block mx-auto"/></td>' +
-                    '<td>' + db.categories[i].strCategoryDescription + '</td>' +
-                    '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Detail</button>' +
-                    '<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
-                    '<div class="modal-dialog">' +
-                    '<div class="modal-content">' +
-                    '<div class="modal-header">' +
-                    '<h1 class="modal-title fs-5" id="exampleModalLabel">' + db.categories[i].strCategory +'</h1>' +
-                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                    '</div>' +
-                    '<div class="modal-body">' +
-                    '<img src="' + db.categories[i].strCategoryThumb + '" class"d-block mx-auto"/>' +
-                    '</div>' +
-                    '<div class="modal-footer">' +
-                    '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</td>' +
-                    '</tr>';
-                $('#data_meal').html(html);
-            }
-        })
+    var html = "";
+    var mealApi = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
-    </script>
+    fetch(mealApi)
+      .then((res) => res.json())
+      .then((data) => {
+        for (i = 1; i < mealApi.length; i++) {
+          var desc = data.categories[i].strCategoryDescription;
+          if (desc.length > 20) {
+            desc = desc.substring(0, 50) + "...";
+          }
+          html +=
+            '<div class="col-md-3 p-4">' +
+            '<div class="card shadow" style="width: 18rem;">' +
+            '<img src="' + data.categories[i].strCategoryThumb + '" class="card-img-top" alt="...">' +
+            '<div class="card-body">' +
+            '<h5 class="card-title">' + data.categories[i].strCategory + '</h5>' +
+            `<p class="card-text">${desc}</p>` +
+            '<div class="row">' +
+            '<div class="col-md-6">' +
+            `<i class="bx bx-cart-add carts"  data-apper="${data.categories[i].strCategory}" role="button"></i>` +
+            "</div>" +
+            '<div class="col-md-6 d-flex justify-content-end">' +
+            `<a href="#" class="btn btn-primary modals" data-image="${data.categories[i].strCategoryThumb}" data-title="${data.categories[i].strCategory}" data-desc="${data.categories[i].strCategoryDescription}" data-bs-toggle="modal" data-bs-target="#appertizer">Detail</a>` +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+
+            '<div class="modal fade" id="appertizer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+            '<div class="modal-dialog modal-dialog-centered">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            `<h1 class="modcal-title fs-3" id="exampleModalLabel"></h1>` +
+            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+            "</div>" +
+            '<div class="modal-body">' +
+            `<img class="img-modal d-block mx-auto">` +
+            `<h1 class="modal-desc fs-5" id="exampleModalLabel"></h1>` +
+            '</div>' +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+            '<button type="button" class="btn btn-primary">Save changes</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+          $('#data_api').html(html);
+
+
+          $('.modals').click(function () {
+            $('.img-modal').attr('src', $(this).attr('data-image'));
+            $('.modal-title').html($(this).attr('data-title'));
+            $('.modal-desc').html($(this).attr('data-desc'));
+          })
+
+          $('.carts').click(function () {
+            // nilainya
+            var n = $(this).attr('data-apper');
+            // tablenya
+            var table = document.getElementById('cart-table');
+            // rownya
+            var row = table.insertRow(1)
+            // columbnya
+            var column1 = row.insertCell(0);
+            var column2 = row.insertCell(1);
+            //lempar data dalam bentuk htmlf
+            column1.innerHTML = n
+            column2.innerHTML = 1
+
+            Swal.fire({
+            icon: 'success',
+            title: 'Berhasil YGY',
+          })
+          })
+
+
+        }
+      });
+
+    // untuk memasukan dan mengeluarkan sidebar
+    document.getElementById("button-toggle").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("active-sidebar");
+      document
+        .getElementById("main-content")
+        .classList.toggle("active-main-content");
+    });
+
+    $("#button-toggle").click(function () {
+      $("#icon").toggleClass("bx  bxs-chevrons-right bx bxs-chevrons-left");
+    });
+
+    $("#switch").click(function () {
+      $("#labelmode").toggleClass("bxs-moon bx-moon");
+      $("body, .card").toggleClass("bg-dark");
+      $("#textmode, .card").toggleClass("text-light");
+    });
+  </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>

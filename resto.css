@@ -97,3 +97,41 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+.card.shadow:hover {
+  -webkit-transition: all 2.s ease-in-out;
+  -moz-transition: all 2.s ease-in-out;
+  -o-transition: all 2.s ease-in-out;
+  -ms-transition: all 2.s ease-in-out;
+  -webkit-transition: scale(1.1);
+  -moz-transition: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* Waves*/
+.ocean {
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  z-index: -1;
+}
+
+.ombak {
+  background: url("wave.svg");
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  animation: ombak 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes ombak {
+  0% {transform: translateX(0);}
+  50% {transform: translateX(-25%);}
+  100% {transform: translateX(-50%);}
+}

@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Owner</title>
+    <title>Reservasi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="resto.css">
+
 </head>
 
 <body>
@@ -69,40 +70,42 @@
                 </a>
             </li>
             <li>
-        <a href="suggestion.html" class="text-custom">
-          <i class='bx bx-comment-dots' ></i> Sugesstion
-        </a>
-      </li>
+                <a href="suggestion.html" class="text-custom">
+                    <i class='bx bx-comment-dots'></i> Sugesstion
+                </a>
+            </li>
         </ul>
     </div>
     <div class="p-4" id="main-content">
         <div class="container">
-            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Owner</h1>
-            <div class="row d-flex">
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <img class="avatar" style="width: 200px; height: 200px;"
-                            src="https://avatars.githubusercontent.com/u/68832297?v=4">
-                    </div>
-                    <div class="table-responsive mt-3">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th>Username</th>
-                                    <th>Following</th>
-                                    <th>Followers</th>
-                                    <th>Location</th>
-                                    <th>Company</th>
-                                </tr>
-                            </thead>
-                            <tbody id="data_git">
-                            </tbody>
-                        </table>
-                    </div>
+            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Sugesstion</h1>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <form action="/action_page.php">
+                        <label for="fname">Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                        <label for="lname">Email</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            <option value="australia">Indonesia</option>
+                            <option value="canada">Wakanda</option>
+                            <option value="usa">USA</option>
+                        </select>
+
+                        <label for="subject">Kritik saran</label>
+                        <textarea id="subject" name="subject" placeholder="Write something.."
+                            style="height:200px"></textarea>
+
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     <footer class="footer fixed-bottom py-3 bg-custom">
         <div class="container text-center">
             <span class="text-light">Copyright ©Reyhan Mohamad Akbar </span>
@@ -126,24 +129,10 @@
 
         $('#switch').click(function () {
             $('#main-content , .footer , .navbar').toggleClass('bg-dark');
-            $('#textmode, .table').toggleClass('text-light');
+            $('#textmode , .card-title , .card-text , .price , .rating').toggleClass('text-light');
+            $('.card').toggleClass('card-bg')
             $('#sidebar').toggleClass('bg-dark')
             $('#labelmode').toggleClass('bxs-moon bx-moon')
-        })
-
-        var html = '';
-        var sumber = 'https://api.github.com/users/reyhan05';
-
-        fetch('https://api.github.com/users/reyhan05').then(res => res.json()).then(response => {
-            html += '<tr>' +
-                '<td>' + response.login + '</td>' +
-                '<td>' + response.following + '</td>' +
-                '<td>' + response.followers + '</td>' +
-                '<td>' + response.location + '</td>' +
-                '<td>' + response.company + '</td>' +
-                '</tr>';
-            $('#data_git').html(html);
-
         })
 
     </script>
