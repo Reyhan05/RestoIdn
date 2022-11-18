@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="resto.css">
-
 </head>
 
 <body>
@@ -78,7 +78,7 @@
     </div>
     <div class="p-4" id="main-content">
         <div class="container">
-            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Sugesstion</h1>
+            <h1 class="h1 text-center text-custom" id="textmode" style="font-family: Brush Script mt;">Reservation</h1>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
                     <form action="/action_page.php">
@@ -88,18 +88,29 @@
                         <label for="lname">Email</label>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                            <option value="australia">Indonesia</option>
-                            <option value="canada">Wakanda</option>
-                            <option value="usa">USA</option>
-                        </select>
+                        <label for="lname">Waktu</label>
+                        <input type="datetime-local" id="lname" name="lastname">
 
-                        <label for="subject">Kritik saran</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.."
-                            style="height:200px"></textarea>
+                        <label for="lname">Pesanan</label>
+                        <input type="datetime-local" id="lname" name="lastname">
 
-                        <input type="submit" value="Submit">
+                        <div class="col-md-12 mt-3">
+                            <div class="row mb-3" id="addRow">
+                                <div class="col-md-4 mb-3 mt-2">
+                                    <select class="form-select" aria-label="Default select example" id="selectList"
+                                        style="width: 100%;"></select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <input type="number" placeholder="stock" aria-label="Default select example"
+                                        id="selectList" />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <button class="btn btn-success" type="button" name="add" id="add"><i
+                                            class="bx bx-plus"></i></button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="button">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -111,12 +122,13 @@
             <span class="text-light">Copyright ©Reyhan Mohamad Akbar </span>
         </div>
     </footer>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js "
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin=" anonymous "></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         document.getElementById('button-toggle').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('active-sidebar')
@@ -134,6 +146,80 @@
             $('#sidebar').toggleClass('bg-dark')
             $('#labelmode').toggleClass('bxs-moon bx-moon')
         })
+
+        // Without select2 JS
+        // var html = '';
+        // var ajax = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+
+        // fetch(ajax).then(res => res.json()).then(data => {
+        //     for (i = 1; i < ajax.length; i++) {
+        //         html +=
+        //             '<option>' + data.categories[i].strCategory + '</option>'
+        //             $('#selectList').html(html);
+        //     }
+        // })
+
+        // Using select2 JS
+        $('#selectList').select2({
+            placeholder: 'Pilih Makanan',
+            ajax: {
+                dataType: 'json',
+                delay: '250',
+                url: 'https://www.themealdb.com/api/json/v1/1/categories.php',
+                processResults: function (data) {
+                    return {
+                        results: $.map(data.categories, function (obj) {
+                            return {
+                                text: obj.strCategory,
+                                id: obj.idCategory,
+                            };
+                        })
+                    }
+                }
+            }
+        })
+
+        var i = 1;
+        $('#add').click(function () {
+            i++;
+            $('#addRow').append(
+                '<div class="col-md-4 mb-3 mt-2 row' + i + '">' +
+                '<select class="form-select selectList" aria-label="Default select example" name="nameFood[]"  style="width: 100%;"></select>' +
+                '</div>' +
+                '<div class="col-md-4 mb-3 row' + i + '">' +
+                '<input type="number" placeholder="stock" aria-label="Default select example" />' +
+                '</div>' +
+                '<div class="col-md-4 mb-3 row' + i + '">' +
+                '<button class="btn btn-danger btn_remove" type="button" name="remove" id="' + i + '"><i class="bx bx-minus"></i></button>' +
+                '</div>'
+            );
+
+            $('.selectList').select2({
+                placeholder: 'Pilih Makanan',
+                ajax: {
+                    dataType: 'json',
+                    delay: '250',
+                    url: 'https://www.themealdb.com/api/json/v1/1/categories.php',
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.categories, function (obj) {
+                                return {
+                                    text: obj.strCategory,
+                                    id: obj.idCategory,
+                                };
+                            })
+                        }
+                    }
+                }
+            })
+
+            $(document).on('click', '.btn_remove', function () {
+                var btn_id = $(this).attr('id');
+                $('.row' + btn_id + '').remove();
+            })
+        })
+
+
 
     </script>
 </body>
