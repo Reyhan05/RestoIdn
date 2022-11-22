@@ -58,7 +58,7 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="printArea">
           <div class="table-responsive">
             <table class="table" id="cartTable">
               <thead>
@@ -79,7 +79,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="checkOut">Check Out</button>
+          <button type="button" class="btn btn-primary" id="checkOut" onclick="printJS('printArea', 'html')">Check Out</button>
         </div>
       </div>
     </div>
@@ -88,23 +88,18 @@
     <img src="./img/idnbaru.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
     <ul>
       <li>
+        <a href="menu.html" class="text-custom">
+          <i class="bx bx-bowl-rice bx-sm"></i> Main Course
+        </a>
+      </li>
+      <li>
         <a href="appetizer.html" class="text-custom">
           <i class="icon bx bx-baguette bx-sm"></i> Appetizer
         </a>
       </li>
       <li>
-        <a href="#" class="text-custom">
-          <i class="bx bx-bowl-rice bx-sm"></i> Main Course
-        </a>
-      </li>
-      <li>
-        <a href="#" class="text-custom">
+        <a href="dessert.html" class="text-custom">
           <i class="bx bxs-wine"></i> Dessert
-        </a>
-      </li>
-      <li>
-        <a href="#" class="text-custom">
-          <i class="bx bx-popsicle"></i> Snack
         </a>
       </li>
       <li>
@@ -119,7 +114,7 @@
       </li>
       <li>
         <a href="sugestion.html" class="text-custom">
-          <i class="bx bx-child"></i> Suggestion
+          <i class='bx bx-comment-dots'></i> Suggestion
         </a>
       </li>
     </ul>
@@ -150,6 +145,7 @@
     crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="  https://printjs-4de6.kxcdn.com/print.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(document).ready(function () {
       $("#status").fadeOut(10000);
@@ -279,6 +275,21 @@
       $('#textmode , .card-title , .card-text, .textcustom').toggleClass('text-light');
       $("#textmode, .card").toggleClass("text-light");
     });
+
+    $('#logout').click(function() {
+            Swal.fire({
+              icon: 'question',
+              title: 'apakah kamu ingin logout ?',
+              showCancelButton: true,
+              confirmButtonText: 'ok',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "form.html";
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+              }
+            })
+          });
   </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->

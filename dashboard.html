@@ -246,6 +246,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
         integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {
             $('#status').fadeOut(10000);
@@ -257,7 +258,7 @@
 
         $('#switch').click(function () {
             $('#main-content , .footer , .navbar, .card-body').toggleClass('bg-dark');
-            $('#textmode, table, .card-title, .card-text').toggleClass('text-light');
+            $('#textmode, table, .card-title, .card-text, .card').toggleClass('text-light');
             $('#labelmode').toggleClass('bxs-moon bx-moon')
         })
 
@@ -272,6 +273,21 @@
                 }
             })
         })
+
+        $('#logout').click(function() {
+            Swal.fire({
+              icon: 'question',
+              title: 'apakah kamu ingin logout ?',
+              showCancelButton: true,
+              confirmButtonText: 'ok',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "form.html";
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+              }
+            })
+          });
 
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {

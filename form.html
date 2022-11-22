@@ -22,7 +22,7 @@
 <body>
     <div class="d-flex vh-100 justify-content-center">
         <div class="container m-auto">
-            <div class="row">
+            <div class="row d-flex align-items-center">
                 <div class="col-md-6">
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -146,7 +146,7 @@
                     })
 
                     function klikPassword() {
-                        var klik = document.getElementById('showpass');
+                        var klik = document.getElementById('password');
                         if (klik.type === "password") {
                             klik.type = 'text';
                         } else {
