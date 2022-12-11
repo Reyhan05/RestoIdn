@@ -44,7 +44,7 @@
             <i class="bx bx-cart bx-sm" role="button" data-bs-toggle="modal" data-bs-target="#cartModal"></i>
           </div>
           &emsp;&emsp;
-          <button class="btn btn-light text-custom" id="  logout" type="button">
+          <button class="btn btn-light text-custom" id="logout" type="button">
             Logout
           </button>
         </form>
@@ -88,6 +88,11 @@
     <img src="./img/idnbaru.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
     <ul>
       <li>
+        <a href="dashboard.html" class="text-custom">
+          <i class='bx bxs-dashboard'></i> Dashboard
+        </a>
+      </li>
+      <li>
         <a href="menu.html" class="text-custom">
           <i class="bx bx-bowl-rice bx-sm"></i> Main Course
         </a>
@@ -113,7 +118,7 @@
         </a>
       </li>
       <li>
-        <a href="sugestion.html" class="text-custom">
+        <a href="suggestion.html" class="text-custom">
           <i class='bx bx-comment-dots'></i> Suggestion
         </a>
       </li>
@@ -284,7 +289,7 @@
               confirmButtonText: 'ok',
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location = "form.html";
+                window.location = "index.html";
               } else if (result.isDenied) {
                 Swal.fire('Changes are not saved', '', 'info')
               }

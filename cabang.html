@@ -48,6 +48,11 @@
     <img src="./img/idnbaru.png" alt="logoidn" width="120" height="100" class="d-block mx-auto align-text-top" />
     <ul>
       <li>
+        <li>
+          <a href="dashboard.html" class="text-custom">
+            <i class='bx bxs-dashboard'></i> Dashboard
+          </a>
+        </li>
         <a href="menu.html" class="text-custom">
           <i class='bx bx-bowl-rice bx-sm'></i> Main Course
         </a>
@@ -110,6 +115,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
      $(document).ready(function () {
         $("#status").fadeOut(10000);
@@ -169,6 +175,21 @@
     //             $('#data_api').html(html);
     //   }
     //   })
+
+    $('#logout').click(function() {
+            Swal.fire({
+              icon: 'question',
+              title: 'apakah kamu ingin logout ?',
+              showCancelButton: true,
+              confirmButtonText: 'ok',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "index.html";
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+              }
+            })
+          });
 
   </script>
 </body>
